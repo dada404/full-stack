@@ -6,7 +6,33 @@ const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  return <div>code here</div>;
+  return (
+    <div>
+      <h1>give feedback</h1>
+      <Button text="good" handleClick={() => setGood(good + 1)} />
+      <Button text="neutral" handleClick={() => setNeutral(neutral + 1)} />
+      <Button text="bad" handleClick={() => setBad(bad + 1)} />
+      <h1>statistics</h1>
+      <FeedBackState text="good" time={good}></FeedBackState>
+      <FeedBackState text="neutral" time={neutral}></FeedBackState>
+      <FeedBackState text="bad" time={bad}></FeedBackState>
+    </div>
+  );
 };
+
+// const ButtonGroup = (props) => {
+//   return props.map((state, index) => (
+//     <Button handleClick={state.handleClick} text={state.text} key={index} />
+//   ));
+// };
+const Button = (props) => {
+  return <button onClick={props.handleClick}>{props.text}</button>;
+};
+
+const FeedBackState = (props) => (
+  <p>
+    {props.text} {props.time}
+  </p>
+);
 
 export default App;
