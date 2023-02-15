@@ -29,7 +29,11 @@ const App = () => {
       <Button text="good" handleClick={() => setGood(good + 1)} />
       <Button text="neutral" handleClick={() => setNeutral(neutral + 1)} />
       <Button text="bad" handleClick={() => setBad(bad + 1)} />
-      <Statistics name="Statistics" statistics={statistics}></Statistics>
+      <Statistics
+        all={good + neutral + bad}
+        name="Statistics"
+        statistics={statistics}
+      ></Statistics>
     </div>
   );
 };
@@ -56,8 +60,15 @@ const FeedBackStatistics = ({ statistics }) => {
     ></FeedBackStatistic>
   ));
 };
-const Statistics = ({ name, statistics }) => {
-  console.log(name, statistics);
+const Statistics = ({ all, name, statistics }) => {
+  if (all === 0)
+    return (
+      <>
+        <h1>{name}</h1>
+        <p>No Feedback given</p>
+      </>
+    );
+
   return (
     <>
       <h1>{name}</h1>
