@@ -7,9 +7,9 @@ const App = () => {
   const [bad, setBad] = useState(0);
 
   class Statistic {
-    constructor(name, number) {
+    constructor(name, value) {
       this.name = name;
-      this.number = number;
+      this.value = value;
     }
   }
   const statistics = [
@@ -47,17 +47,17 @@ const Button = ({ text, handleClick }) => {
   return <button onClick={handleClick}>{text}</button>;
 };
 
-const FeedBackStatistic = ({ text, number }) => (
+const StatisticsLine = ({ text, value }) => (
   <div>
-    {text} {number}
+    {text} {value}
   </div>
 );
-const FeedBackStatistics = ({ statistics }) => {
+const StatisticsLines = ({ statistics }) => {
   return statistics.map((statistic) => (
-    <FeedBackStatistic
+    <StatisticsLine
       text={statistic.name}
-      number={statistic.number}
-    ></FeedBackStatistic>
+      value={statistic.value}
+    ></StatisticsLine>
   ));
 };
 const Statistics = ({ all, name, statistics }) => {
@@ -72,7 +72,7 @@ const Statistics = ({ all, name, statistics }) => {
   return (
     <>
       <h1>{name}</h1>
-      <FeedBackStatistics statistics={statistics}></FeedBackStatistics>
+      <StatisticsLines statistics={statistics}></StatisticsLines>
     </>
   );
 };
