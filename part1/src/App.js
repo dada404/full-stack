@@ -16,6 +16,14 @@ const App = () => {
       <FeedBackState text="good" time={good}></FeedBackState>
       <FeedBackState text="neutral" time={neutral}></FeedBackState>
       <FeedBackState text="bad" time={bad}></FeedBackState>
+      <FeedBackState
+        text="average"
+        time={(good - bad) / (good + neutral + bad)}
+      ></FeedBackState>
+      <FeedBackState
+        text="positive"
+        time={good / (good + neutral + bad)}
+      ></FeedBackState>
     </div>
   );
 };
@@ -30,9 +38,9 @@ const Button = (props) => {
 };
 
 const FeedBackState = (props) => (
-  <p>
+  <div>
     {props.text} {props.time}
-  </p>
+  </div>
 );
 
 export default App;
