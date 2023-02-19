@@ -38,9 +38,7 @@ const Header = (props) => {
   return <h1>{props.course}</h1>;
 };
 const Content = (props) => {
-  return props.parts.map((part, index) => (
-    <Part part={part} key={index}></Part>
-  ));
+  return props.parts.map((part) => <Part part={part} key={part.id}></Part>);
 };
 
 const Part = (props) => {
