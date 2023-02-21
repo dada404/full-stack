@@ -64,4 +64,9 @@ const SingleCountry = ({ country }) => {
           <li key={lang}>{lang}</li>
         ))}
       </ul>
-      <img src={cou
+      <img src={country.flags.png} alt="" />
+    </div>
+  );
+};
+
+export default App;
