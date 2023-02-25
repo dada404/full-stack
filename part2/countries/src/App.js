@@ -34,8 +34,8 @@ const App = () => {
       <div>
         find countries
         <input onChange={handleChange} value={searchCountry} />
+        <Countries countries={countries}></Countries>
       </div>
-      <Countries countries={countries}></Countries>
     </>
   );
 };
@@ -45,9 +45,9 @@ const Countries = ({ countries }) => {
     return <SingleCountry country={countries[0]}></SingleCountry>;
   }
   if (countries.length > 10) return <p> too many countries</p>;
-  return countries.map(({ name: { common } }) => (
-    <Country key={common} name={common}></Country>
-  ));
+  return <div>{countries.map(({ fifa, name: { common } }) => (
+    <Country key={fifa} name={common}></Country>
+  ))}</div>;
 };
 const Country = ({ name }) => {
   return <p>{name}</p>;
